@@ -1,0 +1,13 @@
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.exe
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.deps.json
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.runtimeconfig.json
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.runtimeconfig.dev.json
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.dll
+C:\Users\Teacher\source\repos\Volleyball\Volley\bin\Debug\netcoreapp3.1\Volley.pdb
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.csprojAssemblyReference.cache
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.AssemblyInfoInputs.cache
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.AssemblyInfo.cs
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.csproj.CoreCompileInputs.cache
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.dll
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.pdb
+C:\Users\Teacher\source\repos\Volleyball\Volley\obj\Debug\netcoreapp3.1\Volley.genruntimeconfig.cache
