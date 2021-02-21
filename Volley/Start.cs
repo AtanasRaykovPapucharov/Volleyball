@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Text;
 
 using Volley.Classes.Game;
 using Volley.Classes.Static;
@@ -10,6 +11,8 @@ namespace Volley
     class Start
     {
         static bool off = true;
+
+        static Random random = new Random();
 
         static int firstPlayerX = Console.WindowWidth / 8;
         static int secondPlayerX = 7 * Console.WindowWidth / 8;
@@ -29,12 +32,22 @@ namespace Volley
         static Player player1 = new Player(firstPlayerX, playerY, ConsoleColor.Red);
         static Player player2 = new Player(secondPlayerX, playerY, ConsoleColor.Blue);
 
-        static Ball ball = new Ball(ballX, ballY, ConsoleColor.Black, Constants.BALL_BLOCK);
+        static Ball ball = new Ball(ballX, ballY, ConsoleColor.Black, Constants.BALL_BLOCK1.ToCharArray()[0]);
 
         static Net net = new Net(netX, netY, ConsoleColor.DarkGray);
 
         static void Main()
         {
+            Console.WriteLine("Player1 / Enter your name:");
+
+            player1.Name = Console.ReadLine();
+
+            Console.WriteLine("Player2 / Enter your name:");
+
+            player2.Name = Console.ReadLine();
+
+            Console.Clear();
+
             SetConsole();
 
             PrintAll(player1, player2, ball, net);
@@ -90,15 +103,31 @@ namespace Volley
                             {
                                 if (ball.X >= player1.X - 1 && ball.X <= player1.X + Constants.PLAYER_SIZE)
                                 {
-                                    ball.X -= 3;
-                                    ballDirection = Direction.LeftUp;
+                                    if (ball.X < Console.WindowWidth / 4)
+                                    {
+                                        ball.X += random.Next(0, 5);
+                                    }
+                                    else
+                                    {
+                                        ball.X -= random.Next(0, 5);
+                                    }
+
+                                    ballDirection = Direction.RightUp;
                                 }
                             }
                             else if (ball.X > Console.WindowWidth / 2 + 1)
                             {
                                 if (ball.X >= player2.X - 1 && ball.X <= player2.X + Constants.PLAYER_SIZE)
                                 {
-                                    ball.X -= 3;
+                                    if (ball.X < 3 * Console.WindowWidth / 4)
+                                    {
+                                        ball.X += random.Next(0, 5);
+                                    }
+                                    else
+                                    {
+                                        ball.X -= random.Next(0, 5);
+                                    }
+
                                     ballDirection = Direction.LeftUp;
                                 }
                             }
@@ -111,17 +140,19 @@ namespace Volley
                             {
                                 if (ball.X < player1.X - 1 || ball.X > player1.X + Constants.PLAYER_SIZE)
                                 {
-                                    ballDirection = Direction.LeftUp;
                                     player2.GetPoint();
                                 }
+
+                                ballDirection = Direction.LeftUp;
                             }
                             else if (ball.X > Console.WindowWidth / 2 + 1)
                             {
                                 if (ball.X < player2.X - 1 || ball.X > player2.X + Constants.PLAYER_SIZE)
                                 {
-                                    ballDirection = Direction.LeftUp;
                                     player1.GetPoint();
                                 }
+
+                                ballDirection = Direction.LeftUp;
                             }
 
                             // in the corners
@@ -153,7 +184,15 @@ namespace Volley
                             {
                                 if (ball.X >= player1.X - 1 && ball.X <= player1.X + Constants.PLAYER_SIZE)
                                 {
-                                    ball.X += 3;
+                                    if (ball.X < Console.WindowWidth / 4)
+                                    {
+                                        ball.X += random.Next(0, 5);
+                                    }
+                                    else
+                                    {
+                                        ball.X -= random.Next(0, 5);
+                                    }
+
                                     ballDirection = Direction.RightUp;
                                 }
                             }
@@ -161,32 +200,41 @@ namespace Volley
                             {
                                 if (ball.X >= player2.X - 1 && ball.X <= player2.X + Constants.PLAYER_SIZE)
                                 {
-                                    ball.X += 3;
-                                    ballDirection = Direction.RightUp;
+                                    if (ball.X < 3 * Console.WindowWidth / 4)
+                                    {
+                                        ball.X += random.Next(0, 5);
+                                    }
+                                    else
+                                    {
+                                        ball.X -= random.Next(0, 5);
+                                    }
+                                    ballDirection = Direction.LeftUp;
                                 }
                             }
                         }
-                        
+
                         // point and reflect
                         if (ball.Y == Console.WindowHeight - 1)
                         {
                             if (ball.X < Console.WindowWidth / 2 - 1)
                             {
-                                if (ball.X < player1.X - 1 || ball.X > player1.X + Constants.PLAYER_SIZE)
+                                if (ball.X < player1.X - 1 || ball.X > player1.X + Constants.PLAYER_SIZE + 1)
                                 {
-                                    ballDirection = Direction.RightUp;
                                     player2.GetPoint();
                                 }
+
+                                ballDirection = Direction.RightUp;
                             }
                             else if (ball.X > Console.WindowWidth / 2 + 1)
                             {
-                                if (ball.X < player2.X - 1 || ball.X > player2.X + Constants.PLAYER_SIZE)
+                                if (ball.X < player2.X - 1 || ball.X > player2.X + Constants.PLAYER_SIZE + 1)
                                 {
-                                    ballDirection = Direction.RightUp;
                                     player1.GetPoint();
                                 }
+
+                                ballDirection = Direction.RightUp;
                             }
-                            
+
                             // in the corners
                             if (ball.X == Console.WindowWidth / 2 + 1)
                             {
@@ -250,12 +298,10 @@ namespace Volley
 
                 // new frame
                 Console.Clear();
-
                 ball.Move(ballDirection);
-
                 PrintAll(player1, player2, ball, net);
 
-                Thread.Sleep(130);
+                Thread.Sleep(Constants.VELOCITY);
             }
         }
 
@@ -265,6 +311,7 @@ namespace Volley
             Console.BufferWidth = Console.WindowWidth;
             Console.BufferHeight = Console.WindowHeight;
             Console.CursorVisible = false;
+            Console.OutputEncoding = Encoding.UTF8;
         }
 
         static void PrintAll(Player player1, Player player2, Ball ball, Net net)
@@ -273,6 +320,7 @@ namespace Volley
             player2.Print();
             ball.Print();
             net.Print();
+            PrintNames(player1.Name, player2.Name);
             PrintScore(player1.Points, player2.Points);
         }
 
@@ -282,11 +330,22 @@ namespace Volley
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write($"{p1} - {p2}");
         }
+
         static void PrintMessageAt(int x, int y, string msg)
         {
             Console.SetCursorPosition(x, y);
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Write(msg);
+        }
+
+        static void PrintNames(string name1, string name2)
+        {
+            Console.SetCursorPosition(2, 1);
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.Write(name1);
+            Console.SetCursorPosition(Console.WindowWidth - name2.Length - 2, 1);
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.Write(name2);
         }
     }
 }

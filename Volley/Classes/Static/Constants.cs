@@ -12,6 +12,7 @@ namespace Volley.Classes.Static
         public const char NET_BLOCK = (char)9608;
         public const char PIXEL_BLOCK = (char)9632;
         public const char BALL_BLOCK = 'O';
-
+        public const string BALL_BLOCK1 = "\u25CF";
+        public const int VELOCITY = 120;
     }
 }

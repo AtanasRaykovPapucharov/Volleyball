@@ -12,6 +12,7 @@ namespace Volley.Classes.Game
     public class Player : GameObject, IMovable, IPrintable
     {
         private const int SIZE = Constants.PLAYER_SIZE;
+        private string name;
         private int points = 0;
 
         public Player() : base()
@@ -35,6 +36,18 @@ namespace Volley.Classes.Game
             get
             {
                 return this.points;
+            }
+        }
+
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+            set
+            {
+                this.name = value;
             }
         }
 
