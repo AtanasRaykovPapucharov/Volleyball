@@ -9,13 +9,12 @@ namespace Volley.Classes.Abstract
 {
     public abstract class GameObject
     {
-        protected int _x;
-        protected int _y;
-        protected ConsoleColor _color;
+        private int _x;
+        private int _y;
+        private ConsoleColor _color;
 
         protected GameObject()
         {
-
         }
 
         protected GameObject(int x, int y, ConsoleColor color)

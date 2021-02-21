@@ -6,7 +6,7 @@ using Volley.Classes.Abstract;
 using Volley.Enumerations;
 using Volley.Interfaces;
 
-namespace Volley.Game
+namespace Volley.Classes.Game
 {
     public class Ball : Pixel, IMovable
     {

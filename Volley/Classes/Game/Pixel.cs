@@ -5,7 +5,7 @@ using System.Text;
 using Volley.Classes.Abstract;
 using Volley.Interfaces;
 
-namespace Volley.Game
+namespace Volley.Classes.Game
 {
     public class Pixel : GameObject, IPrintable
     {

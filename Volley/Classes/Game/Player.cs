@@ -7,7 +7,7 @@ using Volley.Classes.Static;
 using Volley.Enumerations;
 using Volley.Interfaces;
 
-namespace Volley.Game
+namespace Volley.Classes.Game
 {
     public class Player : GameObject, IMovable, IPrintable
     {

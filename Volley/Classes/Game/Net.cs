@@ -6,19 +6,12 @@ using Volley.Classes.Abstract;
 using Volley.Classes.Static;
 using Volley.Interfaces;
 
-namespace Volley.Game
+namespace Volley.Classes.Game
 {
     public class Net : GameObject, IPrintable
     {
-        public Net() : base()
-        {
-        }
-
         public Net(int x, int y, ConsoleColor color) : base(x, y, color)
         {
-            this._x = x;
-            this._y = y;
-            this._color = color;
         }
 
         public void Print()
